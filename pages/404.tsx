@@ -1,9 +1,7 @@
-import {
-    BigButton,
-    ExternalLink,
-    ImageWithDescription,
-} from 'components/Others';
 import Layout from 'components/Layout';
+import BigButton from 'components/BigButton';
+import ExternalLink from 'components/ExternalLink';
+import ImageWithDescription from 'components/ImageWithDescription';
 import drongoBird from 'public/images/A_flying_greater_racket-tailed_drongo.jpeg';
 
 export default function NotFound() {

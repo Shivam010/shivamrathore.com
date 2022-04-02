@@ -1,11 +1,8 @@
-import {
-    BigButton,
-    ExternalLink,
-    ImageWithDescription,
-} from 'components/Others';
-import me from 'public/me.png';
-import { Container } from 'components/Container';
+// import me from 'public/me.png';
 import Link from 'next/link';
+import BigButton from 'components/BigButton';
+import { Container } from 'components/Container';
+import ExternalLink from 'components/ExternalLink';
 
 export default function Home() {
     const externalLink = (
@@ -59,8 +56,8 @@ export default function Home() {
                             "'Shivam010'",
                             'https://github.com/Shivam010',
                         )}
-                        , on most of the platforms. By the day, I work as a
-                        senior Software Developer at{' '}
+                        , on most of the platforms. By the day, I work as a lead
+                        Software Developer at{' '}
                         {externalLink(
                             'Appointy IT Pvt Ltd',
                             'https://appointy.com',
@@ -140,13 +137,13 @@ export default function Home() {
                             * professionally speaking, both type of jobs exist
                         </span>
                     </p>
-                    <div className="mx-auto mt-8 items-center w-11/12 sm:w-3/4">
+                    {/* <div className="mx-auto mt-8 items-center w-11/12 sm:w-3/4">
                         <ImageWithDescription
                             src={me}
                             placeholder="blur"
                             description="Shivam Rathore at Vagator Beach, Goa, India"
                         />
-                    </div>
+                    </div> */}
                 </div>
                 <BigButton
                     isExternal

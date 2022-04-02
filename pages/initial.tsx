@@ -1,11 +1,9 @@
-import {
-    BigButton,
-    ExternalLink,
-    ImageWithDescription,
-} from 'components/Others';
 import me from 'public/me.png';
 import { Container } from 'components/Container';
 import Link from 'next/link';
+import BigButton from 'components/BigButton';
+import ExternalLink from 'components/ExternalLink';
+import ImageWithDescription from 'components/ImageWithDescription';
 
 export default function Home() {
     const externalLink = (text: string, href: string) => {

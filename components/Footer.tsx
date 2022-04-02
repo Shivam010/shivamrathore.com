@@ -1,7 +1,7 @@
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { ReactNode, useEffect, useState } from 'react';
-import { ExternalLink } from './Others';
+import ExternalLink from './ExternalLink';
 
 const FooterLinks = ({
     href,

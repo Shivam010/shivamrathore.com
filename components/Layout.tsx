@@ -5,12 +5,20 @@ export default function Layout({
     heading,
     metadata,
     children,
+    hideLogo,
+    hideThemeButton,
 }: PropsWithChildren<{
     metadata?: Metadata;
     heading?: ReactNode;
+    hideLogo?: boolean;
+    hideThemeButton?: boolean;
 }>) {
     return (
-        <Container metadata={metadata}>
+        <Container
+            metadata={metadata}
+            hideLogo={hideLogo}
+            hideThemeButton={hideThemeButton}
+        >
             <div className="pt-6 pb-8 mx-auto mb-16 max-w-3xl flex flex-col justify-center items-center">
                 {Heading(heading)}
                 {children}
