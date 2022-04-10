@@ -32,6 +32,16 @@ module.exports = {
                 destination: '/me.png',
                 permanent: true,
             },
+            {
+                source: '/wordle',
+                destination: '/wordle-stories',
+                permanent: true,
+            },
+            {
+                source: '/wordlestories',
+                destination: '/wordle-stories',
+                permanent: true,
+            },
         ];
     },
 };

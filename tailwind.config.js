@@ -1,5 +1,29 @@
 const { fontFamily, screens } = require('tailwindcss/defaultTheme');
 
+/*
+{
+    vxs: '375px',
+    '2xs': '425px',
+    xs: '512px',
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+    '2xl': '1536px'
+}
+
+{
+    mm: '375px',
+    ml: '425px',
+    half: '512px',
+    quater: '640px',
+    tablet: '768px',
+    laptop: '1024px',
+    screen: '1280px',
+    tv: '1536px',
+},
+ */
+
 module.exports = {
     content: [
         './pages/**/*.{js,jsx,ts,tsx}',
@@ -8,6 +32,7 @@ module.exports = {
     darkMode: 'class',
     theme: {
         screens: {
+            vxs: '375px',
             '2xs': '425px',
             xs: '512px',
             ...screens,

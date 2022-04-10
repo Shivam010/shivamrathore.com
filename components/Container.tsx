@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { PropsWithChildren, useEffect, useState } from 'react';
 import Footer from './Footer';
+import Planes from './patterns/Planes';
 
 export type Metadata = {
     title?: string;
@@ -19,12 +20,17 @@ export function Container({
     metadata,
     children,
     hideLogo,
+    showPlanes,
     hideThemeButton,
 }: PropsWithChildren<{
     metadata?: Metadata;
     hideLogo?: boolean;
     hideThemeButton?: boolean;
+    showPlanes?: boolean;
 }>) {
+    // Stoping the theme from changing on the website
+    hideThemeButton = true;
+
     const { forcedTheme, resolvedTheme, setTheme } = useTheme();
     const router = useRouter();
 
@@ -33,7 +39,7 @@ export function Container({
     useEffect(() => setMounted(true), []);
 
     let strictDarkMode: boolean;
-    if (mounted && forcedTheme) {
+    if ((mounted && forcedTheme) || hideThemeButton) {
         strictDarkMode = true;
     }
 
@@ -98,8 +104,12 @@ export function Container({
                     )}
                 </nav>
             </div>
-            <main id="skip" className="flex flex-col justify-center px-8 ">
+            <main
+                id="skip"
+                className="flex flex-col justify-center px-8 overflow-hidden relative"
+            >
                 {children}
+                {showPlanes && <Planes />}
                 <Footer />
             </main>
         </>

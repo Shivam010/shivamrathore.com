@@ -83,6 +83,13 @@ export default function Footer() {
                         <FooterLinks href="https://gql.rathore.ml/">
                             Graphql Play*
                         </FooterLinks>
+                        <FooterLinks
+                            isInternal
+                            href="/wordle-stories"
+                            className="font-logo align-middle"
+                        >
+                            #wordlestories
+                        </FooterLinks>
                         {/* Keep 9works at last at last */}
                         <FooterLinks
                             href="https://9works.tk/"

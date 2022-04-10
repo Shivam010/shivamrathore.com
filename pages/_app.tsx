@@ -9,7 +9,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <ThemeProvider
             attribute="class"
-            forcedTheme={pageProps.strictDarkMode ? 'dark' : null}
+            // forcedTheme={pageProps.strictDarkMode ? 'dark' : null}
+            forcedTheme="dark"
         >
             <Component {...pageProps} />
         </ThemeProvider>

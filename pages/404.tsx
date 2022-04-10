@@ -5,14 +5,17 @@ import ImageWithDescription from 'components/ImageWithDescription';
 import drongoBird from 'public/images/A_flying_greater_racket-tailed_drongo.jpeg';
 
 export default function NotFound() {
-    const heading = (
-        <>
-            <span className="text-pink-700">418</span> - i'm a teapot
-        </>
-    );
-
     return (
-        <Layout heading={heading} metadata={{ title: "418 - i'm a teapot" }}>
+        <Layout
+            hideLogo
+            showPlanes
+            heading={
+                <>
+                    <span className="text-pink-700">418</span> - i'm a teapot
+                </>
+            }
+            metadata={{ title: "418 - i'm a teapot" }}
+        >
             <blockquote className="mb-14">
                 <div className="mb-5">
                     Why stick with a generic 404 Not Found page, when you could
