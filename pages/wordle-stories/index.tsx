@@ -1,4 +1,7 @@
+import ExternalLink from 'components/ExternalLink';
 import Layout from 'components/Layout';
+import WordleIntro from 'components/WordleIntro';
+import Link from 'next/link';
 
 export default function WordleStories() {
     return (
@@ -12,11 +15,15 @@ export default function WordleStories() {
             hideThemeButton
             showPlanes
             heading={
-                <>
+                <div className="-mt-5">
                     <span className="text-4xl">#</span>wordle
                     <span className="text-pink-700">stories</span>
-                </>
+                </div>
             }
-        ></Layout>
+        >
+            <div>
+                <WordleIntro />
+            </div>
+        </Layout>
     );
 }

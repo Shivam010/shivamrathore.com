@@ -14,9 +14,14 @@ export default function HomeSpaces({ spaces }: { spaces: MySpaceEntry[] }) {
         <div className="w-full">
             <h2
                 id="spaces"
-                className="w-full font-logo text-3xl sm:text-4xl mt-14 mb-7"
+                className="w-full font-logo text-3xl sm:text-4xl mt-10 mb-7"
             >
-                my <span className="text-pink-700">other</span> spaces...
+                <Link href={'#spaces'}>
+                    <a>
+                        my <span className="text-pink-700">other</span>{' '}
+                        spaces...
+                    </a>
+                </Link>
             </h2>
             <p className="mb-5">
                 ...for tinkering, experimenting and lots more
