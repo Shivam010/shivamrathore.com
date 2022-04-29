@@ -1,6 +1,6 @@
-import ExternalLink from './ExternalLink';
+import ExternalLink from '../ExternalLink';
 import Link from 'next/link';
-import BigButton from './BigButton';
+import BigButton from '../BigButton';
 
 export type MySpaceEntry = {
     title: string;
@@ -9,7 +9,7 @@ export type MySpaceEntry = {
     children?: React.ReactNode;
 };
 
-export default function HomeSpaces({ spaces }: { spaces: MySpaceEntry[] }) {
+export default function MySpaces({ spaces }: { spaces: MySpaceEntry[] }) {
     return (
         <div className="w-full">
             <h2

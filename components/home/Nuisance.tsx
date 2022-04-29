@@ -1,6 +1,6 @@
-import ExternalLink from './ExternalLink';
+import ExternalLink from '../ExternalLink';
 import Link from 'next/link';
-import WordleIntro from './WordleIntro';
+import WordleIntro from '../wordle/Intro';
 
 export default function HomeNuisance() {
     return (

@@ -4,8 +4,8 @@ import { Container } from 'components/Container';
 import ExternalLink from 'components/ExternalLink';
 import Image from 'next/image';
 import rubiks from 'public/images/Rubiks_cube.png';
-import HomeNuisance from 'components/HomeNuisance';
-import HomeSpaces, { MySpaceEntry } from 'components/HomeSpaces';
+import HomeNuisance from 'components/home/Nuisance';
+import MySpaces, { MySpaceEntry } from 'components/home/MySpaces';
 import Canva from 'components/patterns/Canva';
 import Planes from 'components/patterns/Planes';
 
@@ -24,6 +24,11 @@ export default function Home() {
         {
             title: 'open source?',
             endpoint: '/why-open-source',
+            children: (
+                <>
+                    open <span className="text-pink-700"> source </span>?
+                </>
+            ),
         },
         {
             title: '#WordleStories',
@@ -133,7 +138,7 @@ export default function Home() {
                     </p>
                 </div>
                 <HomeNuisance />
-                <HomeSpaces spaces={spaces} />
+                <MySpaces spaces={spaces} />
             </div>
             <Planes />
             <Canva />

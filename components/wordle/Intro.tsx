@@ -1,5 +1,7 @@
-import ExternalLink from './ExternalLink';
+import ExternalLink from '../ExternalLink';
 import Link from 'next/link';
+import WordleStory from './Story';
+import { WordleType } from 'lib/types';
 
 export default function WordleIntro({
     showExample,
@@ -39,29 +41,30 @@ export default function WordleIntro({
             {showExample ? (
                 <>
                     <h3 className="my-5 font-bold w-full">
-                        Here's the one from the last day:
+                        Here's the one from the last day and checkout others at
+                        the{' '}
+                        <Link href="/wordle-stories">
+                            <a className="text-pink-700 hover:underline hover:underline-offset-4">
+                                stories page
+                            </a>
+                        </Link>
+                        .
                     </h3>
-                    <blockquote className="mb-5" title="Wordle253">
-                        <ExternalLink href="https://twitter.com/010Shivam/status/1481720479442698241">
-                            <h3 className="inline font-bold text-pink-700">
-                                Wordle 253,
-                            </h3>
-                        </ExternalLink>
-                        <p>
-                            The thing that I liked the most in this multiverse
-                            is 'the end', becase it is what marks the new
-                            beginning.
-                        </p>
-                    </blockquote>
-                    <Link href="/wordle-stories">
-                        <a className="font-bold">
-                            Check out others{' '}
-                            <span className="underline underline-offset-4">
-                                here
-                            </span>
-                            .
-                        </a>
-                    </Link>
+                    <div className="mt-5">
+                        <WordleStory
+                            day={295}
+                            answer={'Black'}
+                            guesses={['Dated', 'Plans', 'Claws', 'Black']}
+                            link={'https://twitter.com/status/...'}
+                            story={`
+                    She Dated him with love.
+                    He Plans a surprise for her above.
+                    But the history swept it's Claws without glove.
+                    The night is called Black, therefore...
+                    `}
+                            type={WordleType.Wordle}
+                        />
+                    </div>
                 </>
             ) : (
                 <></>

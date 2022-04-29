@@ -14,7 +14,8 @@ export default function Empty() {
             }}
             heading={
                 <>
-                    <span className="text-pink-700">why</span> Open Source?
+                    <span className="text-pink-700">why</span> Open Source
+                    <span className="text-pink-700">?</span>
                 </>
             }
         >
@@ -35,10 +36,7 @@ export default function Empty() {
                     * professionally speaking, both type of jobs exist
                 </span>
             </p>
-            <BigButton
-                href="/"
-                className="w-48 mx-auto mt-5 -mb-5"
-            >
+            <BigButton href="/" className="w-48 mx-auto mt-5 -mb-5">
                 Home
             </BigButton>
         </Layout>

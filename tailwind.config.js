@@ -59,6 +59,7 @@ module.exports = {
             },
             animation: {
                 hi: 'hi 1s linear infinite',
+                swing: 'swing 625ms ease-in',
             },
             keyframes: {
                 hi: {
@@ -66,6 +67,17 @@ module.exports = {
                         transform: 'rotate(0deg) skew(0deg, 0deg)',
                     },
                     '50%': { transform: 'rotate(10deg) skew(-20deg, 20deg)' },
+                },
+                swing: {
+                    '0%': {
+                        transform: 'rotateX(0deg)',
+                    },
+                    '40%': {
+                        transform: 'rotateX(-90deg)',
+                    },
+                    '100%': {
+                        transform: 'rotateX(0deg)',
+                    },
                 },
             },
             backgroundImage: {
