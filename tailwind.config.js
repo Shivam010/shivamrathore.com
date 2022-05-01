@@ -59,7 +59,7 @@ module.exports = {
             },
             animation: {
                 hi: 'hi 1s linear infinite',
-                swing: 'swing 625ms ease-in',
+                swing: 'swing 500ms ease-in',
             },
             keyframes: {
                 hi: {
