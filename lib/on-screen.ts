@@ -24,6 +24,7 @@ export default function useOnScreen<Element extends HTMLElement>(
     };
 
     useEffect(() => {
+        onScroll();
         document.addEventListener('scroll', onScroll, true);
         return () => document.removeEventListener('scroll', onScroll, true);
     });

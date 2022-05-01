@@ -33,6 +33,7 @@ module.exports = {
     theme: {
         screens: {
             vxs: '375px',
+            my: '400px',
             '2xs': '425px',
             xs: '512px',
             ...screens,

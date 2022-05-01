@@ -121,6 +121,7 @@ export default function Home() {
                     <p className="mb-5">
                         <span className="-ml-2 -mb-2 pr-2 float-left">
                             <Image
+                                alt="Shuffled Rubiks cube"
                                 src={rubiks}
                                 placeholder="blur"
                                 height={'50%'}

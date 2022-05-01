@@ -2,7 +2,6 @@
     "extends": "next/core-web-vitals",
     "rules": {
         "react/prop-types": 0,
-        "react/no-unescaped-entities": 0,
-        "react-hooks/rules-of-hooks": "warn" // Temporarily
+        "react/no-unescaped-entities": 0
     }
 }

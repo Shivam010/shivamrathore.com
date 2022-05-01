@@ -16,36 +16,19 @@ export default function WordleGrid({
                 const colorsCodes = getColorCSSOfGuess(guess, answer);
                 return (
                     <div
-                        ref={ref}
+                        ref={i === 2 ? ref : undefined}
                         key={i}
                         className={'grid grid-cols-5 gap-[5px]'}
                     >
                         {guess.split('').map((letter, j) => {
-                            // set timeout delay for animation
-                            const [show, setShow] = useState(false);
-                            useEffect(() => {
-                                if (letter !== ' ' && isVisible) {
-                                    setTimeout(() => {
-                                        setShow(true);
-                                    }, j * 100);
-                                }
-                            });
-
                             return (
-                                <div
+                                <LetterBox
+                                    letter={letter}
                                     key={j}
-                                    className={
-                                        ' border-2 border-[#3a3a3c] ' +
-                                        ' w-full inline-flex items-center justify-center ' +
-                                        ' text-[1.75rem] leading-7 font-bold uppercase select-none ' +
-                                        ' align-middle box-border ' +
-                                        (show
-                                            ? colorsCodes[j] + ' animate-swing '
-                                            : '')
-                                    }
-                                >
-                                    {letter}
-                                </div>
+                                    pos={j}
+                                    colorsCodes={colorsCodes}
+                                    isVisible={isVisible}
+                                />
                             );
                         })}
                     </div>
@@ -80,4 +63,40 @@ function getColorCSSOfGuess(guess: string, answer: string): string[] {
         }
     }
     return classes;
+}
+
+function LetterBox({
+    letter,
+    pos,
+    colorsCodes,
+    isVisible,
+}: {
+    letter: string;
+    pos: number;
+    colorsCodes: string[];
+    isVisible: Boolean;
+}) {
+    // set timeout delay for animation
+    const [show, setShow] = useState(false);
+    useEffect(() => {
+        if (letter !== ' ' && isVisible) {
+            setTimeout(() => {
+                setShow(true);
+            }, pos * 100);
+        }
+    });
+
+    return (
+        <div
+            className={
+                ' border-2 border-[#3a3a3c] ' +
+                ' w-full inline-flex items-center justify-center ' +
+                ' text-[1.75rem] leading-7 font-bold uppercase select-none ' +
+                ' align-middle box-border ' +
+                (show ? colorsCodes[pos] + ' animate-swing ' : '')
+            }
+        >
+            {letter}
+        </div>
+    );
 }

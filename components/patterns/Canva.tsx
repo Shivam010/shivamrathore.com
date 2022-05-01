@@ -14,7 +14,12 @@ export default function Planes() {
                     ' md:top-[72rem] ' // md:right-20 md:rotate-90
                 }
             >
-                <Image placeholder="blur" src={canva}></Image>
+                {/* Triangular sketch in between pages on the right */}
+                <Image
+                    alt="Triangular sketch on right"
+                    placeholder="blur"
+                    src={canva}
+                ></Image>
             </span>
             <span
                 className={
@@ -24,7 +29,9 @@ export default function Planes() {
                     ' lg:top-[70rem] '
                 }
             >
+                {/* Circular sketch in between pages on the left hidden on small screens */}
                 <Image
+                    alt="Circular sketch on left"
                     placeholder="blur"
                     src={circle}
                     height={'100%'}
