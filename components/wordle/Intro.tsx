@@ -53,6 +53,7 @@ export default function WordleIntro({
                     <div className="mt-5">
                         <WordleStory
                             day={295}
+                            date={'January 1, 2020'}
                             answer={'Black'}
                             guesses={['Dated', 'Plans', 'Claws', 'Black']}
                             link={'https://twitter.com/status/...'}

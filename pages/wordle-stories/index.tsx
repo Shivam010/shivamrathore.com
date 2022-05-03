@@ -28,6 +28,9 @@ export default function WordleHome() {
                 <div className="mt-5">
                     <WordleStory
                         day={295}
+                        date={'April 12, 2022'}
+                        likes={12}
+                        views={12}
                         answer={'Black'}
                         guesses={['Dated', 'Plans', 'Claws', 'Black']}
                         link={'https://twitter.com/status/...'}

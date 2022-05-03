@@ -14,6 +14,7 @@
         "start": "next start"
     },
     "dependencies": {
+        "@prisma/client": "3.13.0",
         "@tailwindcss/typography": "^0.5.0",
         "next": "^12.1.0",
         "next-themes": "^0.1.1",
@@ -30,6 +31,7 @@
         "eslint-config-next": "11.1.0",
         "postcss": "^8.4.5",
         "prettier": "^2.5.1",
+        "prisma": "^3.13.0",
         "typescript": "^4.5.4"
     },
     "prettier": {
