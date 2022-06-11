@@ -22,7 +22,7 @@ export default function Layout({
             showPlanes={showPlanes}
             hideThemeButton={hideThemeButton}
         >
-            <div className="pt-6 pb-8 mx-auto mb-16 max-w-3xl flex flex-col justify-center items-center">
+            <div className="pt-6 pb-8 mx-auto mb-16 max-w-3xl flex flex-col justify-center items-center w-full">
                 {Heading(heading)}
                 {children}
             </div>

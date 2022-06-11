@@ -44,7 +44,7 @@ export default function WordleIntro({
                         Here's the one from the last day and checkout others at
                         the{' '}
                         <Link href="/wordle-stories">
-                            <a className="text-pink-700 hover:underline hover:underline-offset-4">
+                            <a className="text-pink-700 align-text-top hover:underline hover:underline-offset-4">
                                 stories page
                             </a>
                         </Link>
@@ -56,7 +56,7 @@ export default function WordleIntro({
                             date={'January 1, 2020'}
                             answer={'Black'}
                             guesses={['Dated', 'Plans', 'Claws', 'Black']}
-                            link={'https://twitter.com/status/...'}
+                            // link={'https://twitter.com/status/...'}
                             story={`
                     She Dated him with love.
                     He Plans a surprise for her above.

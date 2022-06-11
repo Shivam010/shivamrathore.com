@@ -1,5 +1,4 @@
 import Layout from 'components/Layout';
-import WordleIntro from 'components/wordle/Intro';
 import WordleStory from 'components/wordle/Story';
 import { WordleType } from 'lib/types';
 
@@ -21,26 +20,23 @@ export default function WordleHome() {
                 </div>
             }
         >
-            <div className="w-full">
-                <WordleIntro showExample={true} />
-                <div className="mt-5">
-                    <WordleStory
-                        day={295}
-                        date={'April 12, 2022'}
-                        likes={12}
-                        views={12}
-                        answer={'Black'}
-                        guesses={['Dated', 'Plans', 'Claws', 'Black']}
-                        link={'https://twitter.com/status/...'}
-                        story={`
+            <div className=" w-full">
+                <WordleStory
+                    day={295}
+                    date={'April 12, 2022'}
+                    likes={12}
+                    views={12}
+                    answer={'Black'}
+                    guesses={['Dated', 'Plans', 'Claws', 'Black']}
+                    link={'https://twitter.com/status/...'}
+                    story={`
                     She Dated him with love.
                     He Plans a surprise for her above.
                     But the history swept it's Claws without glove.
                     The night is called Black, therefore...
                     `}
-                        type={WordleType.Wordle}
-                    />
-                </div>
+                    type={WordleType.Wordle}
+                />
             </div>
         </Layout>
     );

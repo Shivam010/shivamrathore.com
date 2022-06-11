@@ -8,8 +8,8 @@ export type WordleStoryDetails = {
     date: string;
     answer: string;
     guesses: string[];
-    link: string;
     story: string;
+    link?: string;
     type: WordleType;
     likes?: number;
     views?: number;
