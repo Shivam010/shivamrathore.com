@@ -8,8 +8,9 @@ import HomeNuisance from 'components/home/Nuisance';
 import MySpaces, { MySpaceEntry } from 'components/home/MySpaces';
 import Canva from 'components/patterns/Canva';
 import Planes from 'components/patterns/Planes';
+import { getLatestWordleStory } from 'lib/wordle';
 
-export default function Home() {
+export default function Home({ wordleStory }) {
     const spaces: MySpaceEntry[] = [
         {
             title: '9works',
@@ -138,7 +139,7 @@ export default function Home() {
                         <i>~2 minutes.</i>
                     </p>
                 </div>
-                <HomeNuisance />
+                <HomeNuisance wordleStory={wordleStory} />
                 <MySpaces spaces={spaces} />
             </div>
             <Planes />
@@ -173,6 +174,7 @@ export function getStaticProps() {
     return {
         props: {
             strictDarkMode: true,
+            wordleStory: getLatestWordleStory(),
         },
     };
 }

@@ -1,4 +1,4 @@
-import { Sentense, WordleStoryDetails } from 'lib/types';
+import { Sentense, WordleStoryDetails } from 'lib/wordle';
 import ExternalLink from '../ExternalLink';
 
 export default function Blockquote(details: WordleStoryDetails) {

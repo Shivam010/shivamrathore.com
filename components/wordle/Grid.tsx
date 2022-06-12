@@ -1,5 +1,5 @@
 import useOnScreen from 'lib/on-screen';
-import { WordleStoryDetails, WordleType } from 'lib/types';
+import { WordleStoryDetails, WordleType } from 'lib/wordle';
 import { useEffect, useRef, useState } from 'react';
 
 export default function WordleGrid({

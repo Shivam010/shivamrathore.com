@@ -1,13 +1,9 @@
 import ExternalLink from '../ExternalLink';
 import Link from 'next/link';
 import WordleStory from './Story';
-import { WordleType } from 'lib/types';
+import { WordleType } from 'lib/wordle';
 
-export default function WordleIntro({
-    showExample,
-}: {
-    showExample?: boolean;
-}) {
+export default function WordleIntro() {
     return (
         <>
             <blockquote className="mb-5" title="twitter/010Shivam">
@@ -38,38 +34,6 @@ export default function WordleIntro({
                 storytelling or snippet series, where I will be using all my
                 guesses in that day's Wordle.
             </p>
-            {showExample ? (
-                <>
-                    <h3 className="my-5 font-bold w-full">
-                        Here's the one from the last day and checkout others at
-                        the{' '}
-                        <Link href="/wordle-stories">
-                            <a className="text-pink-700 align-text-top hover:underline hover:underline-offset-4">
-                                stories page
-                            </a>
-                        </Link>
-                        .
-                    </h3>
-                    <div className="mt-5">
-                        <WordleStory
-                            day={295}
-                            date={'January 1, 2020'}
-                            answer={'Black'}
-                            guesses={['Dated', 'Plans', 'Claws', 'Black']}
-                            // link={'https://twitter.com/status/...'}
-                            story={`
-                    She Dated him with love.
-                    He Plans a surprise for her above.
-                    But the history swept it's Claws without glove.
-                    The night is called Black, therefore...
-                    `}
-                            type={WordleType.Wordle}
-                        />
-                    </div>
-                </>
-            ) : (
-                <></>
-            )}
         </>
     );
 }

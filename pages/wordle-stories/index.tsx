@@ -1,9 +1,15 @@
 import Layout from 'components/Layout';
 import WordleIntro from 'components/wordle/Intro';
 import WordleStory from 'components/wordle/Story';
-import { WordleType } from 'lib/types';
+import { allWordleStories } from 'contentlayer/generated';
+import { WordleStoryDetails, WordleType } from 'lib/wordle';
+import Link from 'next/link';
 
-export default function WordleHome() {
+export default function WordleHome({
+    stories,
+}: {
+    stories: WordleStoryDetails[];
+}) {
     return (
         <Layout
             metadata={{
@@ -15,33 +21,37 @@ export default function WordleHome() {
             hideThemeButton
             // showPlanes
             heading={
-                <div className="-mt-5">
-                    <span className="text-4xl">#</span>wordle
-                    <span className="text-pink-700">stories</span>
-                </div>
+                <Link href={'wordle-stories'}>
+                    <a className="-mt-5">
+                        <span className="text-4xl">#</span>wordle
+                        <span className="text-pink-700">stories</span>
+                    </a>
+                </Link>
             }
         >
             <div className="w-full">
-                <WordleIntro showExample={true} />
-                <div className="mt-5">
-                    <WordleStory
-                        day={295}
-                        date={'April 12, 2022'}
-                        likes={12}
-                        views={12}
-                        answer={'Black'}
-                        guesses={['Dated', 'Plans', 'Claws', 'Black']}
-                        link={'https://twitter.com/status/...'}
-                        story={`
-                    She Dated him with love.
-                    He Plans a surprise for her above.
-                    But the history swept it's Claws without glove.
-                    The night is called Black, therefore...
-                    `}
-                        type={WordleType.Wordle}
-                    />
-                </div>
+                <WordleIntro />
+                <h3 className="mt-5 mb-10 font-bold w-full">
+                    Here're all the stories . . .
+                </h3>
+                {stories.map((story, i) => (
+                    <div className="mt-5" key={i}>
+                        <WordleStory {...story} />
+                    </div>
+                ))}
             </div>
         </Layout>
     );
+}
+
+export async function getStaticProps() {
+    return {
+        props: {
+            stories: allWordleStories
+                .sort((a, b) => {
+                    return Number(b.number) - Number(a.number);
+                })
+                .map((story) => WordleStoryDetails(story)),
+        },
+    };
 }

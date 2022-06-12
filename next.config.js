@@ -1,7 +1,9 @@
+const { withContentlayer } = require('next-contentlayer');
+
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = {
+module.exports = withContentlayer({
     swcMinify: true,
     trailingSlash: false,
     reactStrictMode: true,
@@ -44,7 +46,7 @@ module.exports = {
             },
         ];
     },
-};
+});
 
 function otherHeaders() {
     return [
