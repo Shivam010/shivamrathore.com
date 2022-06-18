@@ -8,11 +8,13 @@ export default function WordleGrid({
     type: typ,
 }: WordleStoryDetails) {
     const [isVisible, ref] = useOnScreen<HTMLDivElement>();
+    answer = answer.toLowerCase();
     return (
         <div className="w-72 h-[21rem] grid grid-rows-6 gap-[5px] p-2 box-border">
             {[...Array(6)].map((_, i) => {
                 let guess = guesses[i];
                 if (!guess) guess = ' '.repeat(answer.length);
+                guess = guess.toLowerCase();
                 const colorsCodes = getColorCSSOfGuess(guess, answer);
                 return (
                     <div

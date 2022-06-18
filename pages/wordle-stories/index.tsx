@@ -48,6 +48,7 @@ export async function getStaticProps() {
     return {
         props: {
             stories: allWordleStories
+                .filter((st) => st.number)
                 .sort((a, b) => {
                     return Number(b.number) - Number(a.number);
                 })

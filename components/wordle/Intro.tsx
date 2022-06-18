@@ -1,7 +1,4 @@
 import ExternalLink from '../ExternalLink';
-import Link from 'next/link';
-import WordleStory from './Story';
-import { WordleType } from 'lib/wordle';
 
 export default function WordleIntro() {
     return (

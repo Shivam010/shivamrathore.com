@@ -41,14 +41,10 @@ export type SentenseWord = {
 
 export function getLatestWordleStory(): WordleStoryDetails {
     if (allWordleStories.length == 0) return null;
-    const latest = allWordleStories.sort((a, b) => {
-        return Number(b.number) - Number(a.number);
-    })[0];
-    console.log(
-        allWordleStories.sort((a, b) => {
+    const latest = allWordleStories
+        .filter((a) => a.number)
+        .sort((a, b) => {
             return Number(b.number) - Number(a.number);
-        }),
-    );
-    console.log(WordleStoryDetails(latest));
+        })[0];
     return WordleStoryDetails(latest);
 }

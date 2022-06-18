@@ -5,7 +5,7 @@ import WordleGrid from './Grid';
 
 export default function WordleStory(details: WordleStoryDetails) {
     return (
-        <div className="mx-auto flex flex-col items-center md:items-start md:flex-row justify-between">
+        <div className="wordle-story mx-auto flex flex-col items-center md:items-start md:flex-row justify-between">
             <div>
                 <h2 id="nuisance" className="font-logo text-4xl my-5">
                     <Link href={'/wordle-stories/' + details.number}>
