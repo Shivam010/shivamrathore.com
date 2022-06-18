@@ -21,7 +21,9 @@ export default function Views({ slug }: ViewsProps) {
 
     return (
         <>
-            <div className="text-sm text-rang-300">{views} views</div>
+            <div className="text-sm text-rang-300">
+                {views !== '0' ? views : '1'} views
+            </div>
         </>
     );
 }

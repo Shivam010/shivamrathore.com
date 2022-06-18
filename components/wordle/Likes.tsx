@@ -41,7 +41,7 @@ export default function Likes({ slug }: LikesProps) {
                     title="Like"
                     className="pl-1 italic text-sm text-rang-300"
                 >
-                    {likes}
+                    {likes !== '0' ? likes : '1'}
                 </span>
             </button>
         </>

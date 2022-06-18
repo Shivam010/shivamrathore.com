@@ -19,7 +19,7 @@ export default function SingleStory({ story }: { story: WordleStoryDetails }) {
             hideLogo
             hideThemeButton
             heading={
-                <Link href={'/wordle-stories' + story.number}>
+                <Link href={'/wordle-stories'}>
                     <a className="-mt-5">
                         <span className="text-4xl">#</span>wordle
                         <span className="text-pink-700">stories</span>
