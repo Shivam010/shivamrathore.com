@@ -6,30 +6,44 @@ export enum WordleType {
 }
 
 export type WordleStoryDetails = {
-    number: number;
+    number: string;
     date: string;
     answer: string;
     guesses: string[];
     story: string;
     link?: string;
     type: WordleType;
-    likes?: number;
-    views?: number;
 };
 
 // constructor for WordleStoryDetails
 export function WordleStoryDetails(story: WordleStory): WordleStoryDetails {
     return {
-        number: story.number,
+        number: story.number.toString(),
         date: story.date,
         answer: story.answer,
         guesses: story.guesses,
         story: story.body.raw,
         link: story.link ? story.link : null,
         type: WordleType.Wordle,
-        likes: 1,
-        views: 1,
     };
+}
+
+// allWordleStoriesDetails is an array of all the WordleStoryDetails
+export const allWordleStoriesDetails = allWordleStories
+    .filter((story) => story.number)
+    .map((story) => WordleStoryDetails(story));
+
+// getLatestWordleStoryDetails returns the latest WordleStoryDetails
+export function getLatestWordleStory(): WordleStoryDetails {
+    // Empty list meaning no story
+    if (allWordleStoriesDetails.length == 0) {
+        return null;
+    }
+
+    const reverseSorted = allWordleStoriesDetails.sort((a, b) => {
+        return Number(b.number) - Number(a.number);
+    });
+    return reverseSorted[0];
 }
 
 export type Sentense = SentenseWord[];
@@ -38,13 +52,3 @@ export type SentenseWord = {
     text: string;
     isGuess: boolean;
 };
-
-export function getLatestWordleStory(): WordleStoryDetails {
-    if (allWordleStories.length == 0) return null;
-    const latest = allWordleStories
-        .filter((a) => a.number)
-        .sort((a, b) => {
-            return Number(b.number) - Number(a.number);
-        })[0];
-    return WordleStoryDetails(latest);
-}

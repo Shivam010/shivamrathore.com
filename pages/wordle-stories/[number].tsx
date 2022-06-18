@@ -1,16 +1,14 @@
 import Layout from 'components/Layout';
 import WordleIntro from 'components/wordle/Intro';
 import WordleStory from 'components/wordle/Story';
-import { allWordleStories } from 'contentlayer/generated';
-import { WordleStoryDetails } from 'lib/wordle';
+import { allWordleStoriesDetails, WordleStoryDetails } from 'lib/wordle';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 export default function SingleStory({ story }: { story: WordleStoryDetails }) {
     return (
         <Layout
             metadata={{
-                title: '#WordleStories' + story.number,
+                title: `#wordle${story.number} – #WordleStories by Shivam`,
                 description:
                     story.number +
                     ' - Answer: ' +
@@ -51,7 +49,7 @@ export default function SingleStory({ story }: { story: WordleStoryDetails }) {
 
 export async function getStaticPaths() {
     return {
-        paths: allWordleStories.map((st) => ({
+        paths: allWordleStoriesDetails.map((st) => ({
             params: { number: st.number.toString() },
         })),
         fallback: false,
@@ -59,8 +57,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const story = allWordleStories
-        .map((story) => WordleStoryDetails(story))
-        .find((story) => story.number == params.number);
-    return { props: { story } };
+    const story = allWordleStoriesDetails.find(
+        (story) => story.number === params.number,
+    );
+    return {
+        props: {
+            story,
+        },
+    };
 }

@@ -1,8 +1,11 @@
 import Layout from 'components/Layout';
 import WordleIntro from 'components/wordle/Intro';
 import WordleStory from 'components/wordle/Story';
-import { allWordleStories } from 'contentlayer/generated';
-import { WordleStoryDetails, WordleType } from 'lib/wordle';
+import {
+    allWordleStoriesDetails,
+    WordleStoryDetails,
+    WordleType,
+} from 'lib/wordle';
 import Link from 'next/link';
 
 export default function WordleHome({
@@ -47,12 +50,9 @@ export default function WordleHome({
 export async function getStaticProps() {
     return {
         props: {
-            stories: allWordleStories
-                .filter((st) => st.number)
-                .sort((a, b) => {
-                    return Number(b.number) - Number(a.number);
-                })
-                .map((story) => WordleStoryDetails(story)),
+            stories: allWordleStoriesDetails.sort((a, b) => {
+                return Number(b.number) - Number(a.number);
+            }),
         },
     };
 }
