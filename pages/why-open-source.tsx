@@ -32,7 +32,7 @@ export default function Empty() {
                 organisations create and/or solve their problems {'&'}{' '}
                 challenges.
                 <br />
-                <span className="text-xs text-rang-600 dark:text-rang-300 italic">
+                <span className="text-xs text-rang-300 italic">
                     * professionally speaking, both type of jobs exist
                 </span>
             </p>
