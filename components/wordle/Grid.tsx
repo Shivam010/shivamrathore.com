@@ -61,7 +61,7 @@ function getColorCSSOfGuess(guess: string, answer: string): string[] {
             continue;
         }
         if (letter !== ' ') {
-            classes[i] = ' bg-[#3a3a3c] ';
+            // classes[i] = ' bg-[#3a3a3c] ';
         }
     }
     return classes;

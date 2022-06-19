@@ -11,7 +11,7 @@ export type MySpaceEntry = {
 
 export default function MySpaces({ spaces }: { spaces: MySpaceEntry[] }) {
     return (
-        <div className="w-full">
+        <div className="w-full -mt-2">
             <h2
                 id="spaces"
                 className="w-full font-logo text-3xl sm:text-4xl mt-10 mb-7"

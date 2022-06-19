@@ -119,7 +119,7 @@ export default function Home({ wordleStory }) {
                         a lot. At any point of time, I'll have at least one
                         paper plane ready to fly at my desk.
                     </p>
-                    <p className="mb-5">
+                    <p className="">
                         <span className="-ml-2 -mb-2 pr-2 float-left">
                             <Image
                                 alt="Shuffled Rubiks cube"

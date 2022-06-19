@@ -9,12 +9,10 @@ export default function SingleStory({ story }: { story: WordleStoryDetails }) {
         <Layout
             metadata={{
                 title: `#wordle${story.number} – #WordleStories by Shivam`,
-                description:
-                    story.number +
-                    ' - Answer: ' +
-                    story.answer +
-                    ' Stories of my Wordle guesses – Shivam Rathore (Shivam010) ',
+                description: storyDescription(story),
                 publishedOn: new Date(story.date),
+                image: 'https://shivamrathore.com/images/wordle-stories.png',
+                ogType: 'article',
             }}
             hideLogo
             hideThemeButton
@@ -65,4 +63,19 @@ export async function getStaticProps({ params }) {
             story,
         },
     };
+}
+
+function storyDescription(details: WordleStoryDetails) {
+    const descriptionLimit = 155 - 3; // 3 for the ellipsis
+    let desc = `Wordle ${details.number} (${details.answer}) Story by Shivam – `;
+
+    details.story
+        .replaceAll('\n', ' ')
+        .split(' ')
+        .forEach((word) => {
+            if (desc.length + word.length + 1 > descriptionLimit) return;
+            desc += word + ' ';
+        });
+
+    return desc.trimEnd() + '...';
 }

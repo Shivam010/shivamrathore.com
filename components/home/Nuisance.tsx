@@ -10,7 +10,7 @@ export default function HomeNuisance({
     wordleStory?: WordleStoryDetails;
 }) {
     return (
-        <div className="w-full mb-5">
+        <div className="w-full">
             <h2
                 id="nuisance"
                 className="w-full font-logo text-3xl sm:text-4xl mt-10 mb-7"
