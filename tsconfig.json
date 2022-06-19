@@ -13,9 +13,18 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "baseUrl": ".",
+        "paths": {
+            "contentlayer/generated": ["./.contentlayer/generated"]
+        },
         "isolatedModules": true,
         "jsx": "preserve"
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/analytics.js"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "lib/analytics.js",
+        ".contentlayer/generated"
+    ],
     "exclude": ["node_modules"]
 }

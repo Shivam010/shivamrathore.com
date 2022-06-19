@@ -1,34 +1,49 @@
 // import me from 'public/me.png';
 import Link from 'next/link';
-import BigButton from 'components/BigButton';
 import { Container } from 'components/Container';
 import ExternalLink from 'components/ExternalLink';
+import Image from 'next/image';
+import rubiks from 'public/images/Rubiks_cube.png';
+import HomeNuisance from 'components/home/Nuisance';
+import MySpaces, { MySpaceEntry } from 'components/home/MySpaces';
+import Canva from 'components/patterns/Canva';
+import Planes from 'components/patterns/Planes';
+import { getLatestWordleStory } from 'lib/wordle';
 
-export default function Home() {
-    const externalLink = (
-        text: string,
-        href: string,
-        noitalic?: boolean,
-        nobold?: boolean,
-    ) => {
-        const fontStyle =
-            (noitalic ? ' not-italic ' : '') + (nobold ? '' : ' font-bold ');
-        return (
-            <ExternalLink href={href}>
-                <span
-                    className={
-                        'text-pink-700 hover:underline underline-offset-4 italic ' +
-                        fontStyle
-                    }
-                >
-                    {text}
-                </span>
-            </ExternalLink>
-        );
-    };
-
+export default function Home({ wordleStory }) {
+    const spaces: MySpaceEntry[] = [
+        {
+            title: '9works',
+            endpoint: 'https://9works.tk',
+            isExternal: true,
+            children: (
+                <>
+                    9wor<span className="text-pink-700">k</span>s
+                </>
+            ),
+        },
+        {
+            title: 'open source?',
+            endpoint: '/why-open-source',
+            children: (
+                <>
+                    open <span className="text-pink-700"> source </span>?
+                </>
+            ),
+        },
+        {
+            title: '#WordleStories',
+            endpoint: '/wordle-stories',
+            children: (
+                <>
+                    <span className="text-xl">#</span>wordle
+                    <span className="text-pink-700">stories</span>
+                </>
+            ),
+        },
+    ];
     return (
-        <Container hideLogo hideThemeButton>
+        <Container hideLogo hideThemeButton showPlanes>
             <div className="mx-auto mb-16 max-w-3xl flex flex-col justify-center items-center">
                 <h1 className="font-logo text-[2.5rem] 2xs:text-5xl xs:text-6xl sm:text-7xl my-2 mx-auto">
                     {/* <h1 className="font-logo text-[2.75rem] xs:text-6xl sm:text-7xl lg:text-[5.5rem] xl:text-8xl mb-2 mx-auto"> */}
@@ -45,26 +60,26 @@ export default function Home() {
                     "Software Developer • Free Time Doodler • Paper Plane Pilot
                     • Rubik's Cuber"
                 </h2>
-                <div className="mb-10">
+                <div>
                     <p className="mb-6">
                         <span className="text-5xl -ml-2 -mt-6 pr-2 float-left animate-hi">
                             👋
                         </span>{' '}
                         Hello, my name is Shivam Rathore, and I go by the
                         username{' '}
-                        {externalLink(
+                        {hyperlink(
                             "'Shivam010'",
                             'https://github.com/Shivam010',
                         )}
                         , on most of the platforms. By the day, I work as a lead
                         Software Developer at{' '}
-                        {externalLink(
+                        {hyperlink(
                             'Appointy IT Pvt Ltd',
                             'https://appointy.com',
                             true,
                         )}{' '}
                         but as the night gathers, my watch begins either as an{' '}
-                        {externalLink(
+                        {hyperlink(
                             'Open-Source Developer',
                             'https://github.com/Shivam010',
                             true,
@@ -96,7 +111,7 @@ export default function Home() {
                     </p>
                     <p className="mb-5">
                         You can find me Flying different-different kinds of{' '}
-                        {externalLink(
+                        {hyperlink(
                             'Paper Planes',
                             'https://en.wikipedia.org/wiki/Paper_plane',
                             true,
@@ -104,9 +119,18 @@ export default function Home() {
                         a lot. At any point of time, I'll have at least one
                         paper plane ready to fly at my desk.
                     </p>
-                    <p className="mb-5">
+                    <p className="">
+                        <span className="-ml-2 -mb-2 pr-2 float-left">
+                            <Image
+                                alt="Shuffled Rubiks cube"
+                                src={rubiks}
+                                placeholder="blur"
+                                height={'50%'}
+                                width={'50%'}
+                            ></Image>
+                        </span>
                         Also, I can solve{' '}
-                        {externalLink(
+                        {hyperlink(
                             "2x2, 3x3, 4x4 and even 5x5 Rubik's Cube,",
                             "https://en.wikipedia.org/wiki/Rubik's_Cube",
                             true,
@@ -114,53 +138,43 @@ export default function Home() {
                         with the 3x3 cube, on an average, in roughly{' '}
                         <i>~2 minutes.</i>
                     </p>
-                    <h2
-                        id="why"
-                        className="w-full font-logo text-3xl sm:text-4xl mt-14 mb-7"
-                    >
-                        why Open Source ?
-                    </h2>
-                    <p className="mb-5">
-                        Contributing to open source has taught me many things
-                        and is still teaching me. And that is the main reason, I
-                        am inclined to it. Today, I maintain three projects and
-                        contribute to a number of them.
-                    </p>
-                    <p className="mb-5">
-                        It has also, introduced me the world of freelancing, one
-                        of my first independent contract was due to the same. I
-                        also, work as a freelancer and ghost worker, helping
-                        individuals and organisations create and/or solve their
-                        problems {'&'} challenges.
-                        <br />
-                        <span className="text-xs text-rang-600 dark:text-rang-300 italic">
-                            * professionally speaking, both type of jobs exist
-                        </span>
-                    </p>
-                    {/* <div className="mx-auto mt-8 items-center w-11/12 sm:w-3/4">
-                        <ImageWithDescription
-                            src={me}
-                            placeholder="blur"
-                            description="Shivam Rathore at Vagator Beach, Goa, India"
-                        />
-                    </div> */}
                 </div>
-                <BigButton
-                    isExternal
-                    href="https://9works.tk"
-                    className="w-64 mx-auto"
-                >
-                    Explore 9works
-                </BigButton>
+                <HomeNuisance wordleStory={wordleStory} />
+                <MySpaces spaces={spaces} />
             </div>
+            <Planes />
+            <Canva />
         </Container>
     );
 }
+
+const hyperlink = (
+    text: string,
+    href: string,
+    noitalic?: boolean,
+    nobold?: boolean,
+) => {
+    const fontStyle =
+        (noitalic ? ' not-italic ' : '') + (nobold ? '' : ' font-bold ');
+    return (
+        <ExternalLink href={href}>
+            <span
+                className={
+                    'text-pink-700 hover:underline underline-offset-4 italic ' +
+                    fontStyle
+                }
+            >
+                {text}
+            </span>
+        </ExternalLink>
+    );
+};
 
 export function getStaticProps() {
     return {
         props: {
             strictDarkMode: true,
+            wordleStory: getLatestWordleStory(),
         },
     };
 }
