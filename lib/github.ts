@@ -9,9 +9,9 @@ export async function getGithubIssues(
     const perPageLimit = 100;
     const labelsString = labels.join(',');
 
-    // issueState will all if it's development environment and closed if it's production
+    // issueState will 'closed' if it's production environment and 'all' otherwise
     const issueState =
-        process.env.NODE_ENV === 'development' ? 'all' : 'closed';
+        process.env.VERCEL_ENV === 'production' ? 'closed' : 'all';
 
     let url = `https://api.github.com/repos/${GH_REPO}/issues?state=${issueState}&creator=${GH_USERNAME}&labels=${labelsString}&per_page=${perPageLimit}`;
 
