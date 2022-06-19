@@ -1,7 +1,7 @@
 import Layout from 'components/Layout';
 import WordleIntro from 'components/wordle/Intro';
 import WordleStory from 'components/wordle/Story';
-import { allWordleStoriesDetails, WordleStoryDetails } from 'lib/wordle';
+import { getAllWordleStoryDetails, WordleStoryDetails } from 'lib/wordle';
 import Link from 'next/link';
 
 export default function WordleHome({
@@ -46,11 +46,13 @@ export default function WordleHome({
 }
 
 export async function getStaticProps() {
+    const allStories = await getAllWordleStoryDetails();
     return {
         props: {
-            stories: allWordleStoriesDetails.sort((a, b) => {
+            stories: allStories.sort((a, b) => {
                 return Number(b.number) - Number(a.number);
             }),
         },
+        revalidate: 10, // revalidate every 10 seconds
     };
 }
