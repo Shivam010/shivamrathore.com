@@ -15,7 +15,7 @@ export default function WordleHome({
                 title: '#WordleStories by Shivam',
                 description:
                     "Initially, every story is just a set of random words that don't make sense, until you club them together and add some sense to it. Hence, here's the stories of my Wordle guesses – Shivam's #Wordle stories.",
-                image: 'https://shivamrathore.com/images/wordle-stories.png',
+                image: 'https://shivamrathore.com/images/wordle-stories.jpeg',
                 ogType: 'article',
             }}
             hideLogo
