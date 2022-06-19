@@ -11,7 +11,7 @@ export default function SingleStory({ story }: { story: WordleStoryDetails }) {
                 title: `#wordle${story.number} – #WordleStories by Shivam`,
                 description: storyDescription(story),
                 publishedOn: new Date(story.date),
-                image: 'https://shivamrathore.com/images/wordle-stories.png',
+                image: 'https://shivamrathore.com/images/wordle-stories.jpeg',
                 ogType: 'article',
             }}
             hideLogo

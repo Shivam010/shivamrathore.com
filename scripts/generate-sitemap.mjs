@@ -15,7 +15,7 @@ const BaseUrl = `https://shivamrathore.com`;
 //     },
 // ],
 const RoutesImagesInfo = {
-    '/': [
+    '': [
         {
             loc: '/banner.png',
             title: 'Shivam Rathore - Software Developer • Cube Solver • Free Time Doodler • Paper Plane Pilot',
@@ -38,11 +38,25 @@ const RoutesImagesInfo = {
             license: 'https://creativecommons.org/licenses/by-sa/4.0/',
         },
     ],
+    '/wordle-stories': [
+        {
+            loc: '/images/wordle-stories.jpeg',
+            title: "Initially, every story is just a set of random words that don't make sense, until you club them together and add some sense to it. Hence, here's the stories of my Wordle guesses – Shivam's #Wordle stories.",
+            license: 'https://creativecommons.org/licenses/by-sa/4.0/',
+        },
+    ],
 };
 
 function sitemapInfoOfRoute(route) {
-    route = (route[0] === '/' ? '' : '/') + route;
-    const routeInfo = RoutesImagesInfo[route];
+    let routeInfo = RoutesImagesInfo[route];
+    if (!routeInfo || routeInfo.length === 0) {
+        for (const info in RoutesImagesInfo) {
+            if (info !== '' && route.includes(info)) {
+                // keep the last value
+                routeInfo = RoutesImagesInfo[info];
+            }
+        }
+    }
     const images = routeInfo
         ? routeInfo.map((o) => {
               if (!o.caption) o.caption = o.title;
@@ -70,6 +84,8 @@ function sitemapInfoOfRoute(route) {
   `;
 }
 
+const skipDirectories = ['/api/', '/wordle-stories/'];
+
 function readDirectories(dir) {
     const pages = [];
     const reader = (dir) => {
@@ -94,14 +110,26 @@ async function generate() {
     const allUrls = pages
         .map((page) => {
             // update page's file path url to corresponding route
-            const route = page
+            // remove extensions and index file name
+            let route = page
                 .replace('pages', '')
                 .replace('public', '')
                 .replace('index.tsx', '')
-                .replace('.tsx', '');
+                .replace('index.ts', '')
+                .replace('.tsx', '')
+                .replace('.mdx', '')
+                .replace('.ts', '');
 
-            return sitemapInfoOfRoute(route);
+            route = (route[0] === '/' ? '' : '/') + route;
+            return route[route.length - 1] === '/' ? route.slice(0, -1) : route;
         })
+        .filter((route) => {
+            // skip these directories
+            const val = !skipDirectories.some((dir) => route.includes(dir));
+            console.log(route, val);
+            return val;
+        })
+        .map((route) => sitemapInfoOfRoute(route)) // convert to sitemap info
         .join('');
 
     const sitemap = `
