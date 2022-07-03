@@ -1,4 +1,4 @@
-import { allWordleStories, WordleStory } from 'contentlayer/generated';
+import { getGithubIssues } from './github';
 
 export enum WordleType {
     Wordle = 0,
@@ -15,32 +15,80 @@ export type WordleStoryDetails = {
     type: WordleType;
 };
 
-// constructor for WordleStoryDetails
-export function WordleStoryDetails(story: WordleStory): WordleStoryDetails {
-    return {
-        number: story.number.toString(),
-        date: story.date,
-        answer: story.answer,
-        guesses: story.guesses,
-        story: story.body.raw,
-        link: story.link ? story.link : null,
-        type: WordleType.Wordle,
-    };
-}
+let _allStories: WordleStoryDetails[] = [];
 
 // allWordleStoriesDetails is an array of all the WordleStoryDetails
-export const allWordleStoriesDetails = allWordleStories
-    .filter((story) => story.number)
-    .map((story) => WordleStoryDetails(story));
+export async function getAllWordleStoryDetails(): Promise<
+    WordleStoryDetails[]
+> {
+    console.log('API called for stories');
+
+    let issues = await getGithubIssues(['wordle_stories']);
+    const stories = issues
+        .map((issue): WordleStoryDetails => {
+            const story: WordleStoryDetails = {
+                number: '',
+                date: '',
+                answer: '',
+                guesses: [],
+                story: '',
+                link: '',
+                type: WordleType.Wordle,
+            };
+            if (!issue.title || !issue.title.startsWith('Wordle ')) {
+                throw new Error(
+                    'Invalid issue title ' +
+                        issue.title +
+                        ' for issue ' +
+                        issue.url,
+                );
+            }
+            story.number = issue.title.substring(7); // remove 'Wordle '
+            if (!issue.body) {
+                throw new Error('Invalid issue body for issue ' + issue.url);
+            }
+
+            const lines = issue.body.split('\n');
+            if (lines.length < 5) {
+                throw new Error('Invalid issue body for issue ' + issue.url);
+            }
+
+            // zeroth line is date with prefix - 'Date: '
+            story.date = lines[0].substring(6).trim();
+            // first line is link with prefix - 'Link: '
+            story.link = lines[1].substring(6).trim();
+            // second line is answer with prefix - 'Answer: '
+            story.answer = lines[2].substring(7).trim();
+            // third line is guesses with prefix - 'Guesses: '
+            story.guesses = lines[3]
+                .substring(9)
+                .split(', ')
+                .map((guess) => guess.trim())
+                .filter((guess) => guess !== '');
+            // remaining lines are story
+            story.story = lines
+                .slice(4)
+                .map((ln) => ln.trim())
+                .filter((ln) => ln !== '')
+                .join('\n')
+                .trim();
+            return story;
+        })
+        .filter((st) => st);
+
+    _allStories = stories;
+    return _allStories;
+}
 
 // getLatestWordleStoryDetails returns the latest WordleStoryDetails
-export function getLatestWordleStory(): WordleStoryDetails {
+export async function getLatestWordleStory(): Promise<WordleStoryDetails> {
+    const allStories = await getAllWordleStoryDetails();
     // Empty list meaning no story
-    if (allWordleStoriesDetails.length == 0) {
+    if (allStories.length == 0) {
         return null;
     }
 
-    const reverseSorted = allWordleStoriesDetails.sort((a, b) => {
+    const reverseSorted = allStories.sort((a, b) => {
         return Number(b.number) - Number(a.number);
     });
     return reverseSorted[0];

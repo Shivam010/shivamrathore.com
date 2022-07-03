@@ -170,11 +170,11 @@ const hyperlink = (
     );
 };
 
-export function getStaticProps() {
+export async function getStaticProps() {
     return {
         props: {
             strictDarkMode: true,
-            wordleStory: getLatestWordleStory(),
+            wordleStory: await getLatestWordleStory(),
         },
     };
 }

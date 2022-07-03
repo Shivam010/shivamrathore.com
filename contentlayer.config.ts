@@ -4,8 +4,8 @@ import {
     makeSource,
 } from 'contentlayer/source-files';
 
-const WordleStory = defineDocumentType(() => ({
-    name: 'WordleStory',
+const Unused_WordleStory = defineDocumentType(() => ({
+    name: 'Unused_WordleStory',
     filePathPattern: 'wordle-stories/*.mdx',
     bodyType: 'mdx',
     fields: {
@@ -25,5 +25,5 @@ const WordleStory = defineDocumentType(() => ({
 
 export default makeSource({
     contentDirPath: 'data',
-    documentTypes: [WordleStory],
+    documentTypes: [Unused_WordleStory],
 });
