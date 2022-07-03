@@ -62,9 +62,11 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
         paths: allStories.map((st) => ({
             params: { number: st.number.toString() },
         })),
-        fallback: true,
+        fallback: 'blocking',
     };
 }
+
+const revalidateTime = 60; // revalidate every 60 seconds
 
 export async function getStaticProps({
     params,
@@ -74,10 +76,14 @@ export async function getStaticProps({
     const allStories = await getAllWordleStoryDetails();
     const story = allStories.find((story) => story.number === params.number);
 
-    if (!story) return { notFound: true };
+    if (!story)
+        return {
+            notFound: true,
+            revalidate: 10, // revalidate every 10 seconds
+        };
     return {
         props: { story },
-        revalidate: 10, // revalidate every 10 seconds
+        revalidate: revalidateTime,
     };
 }
 

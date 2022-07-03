@@ -21,9 +21,6 @@ let _allStories: WordleStoryDetails[] = [];
 export async function getAllWordleStoryDetails(): Promise<
     WordleStoryDetails[]
 > {
-    if (_allStories.length !== 0) {
-        return _allStories;
-    }
     console.log('API called for stories');
 
     let issues = await getGithubIssues(['wordle_stories']);

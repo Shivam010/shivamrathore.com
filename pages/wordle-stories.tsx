@@ -53,6 +53,6 @@ export async function getStaticProps() {
                 return Number(b.number) - Number(a.number);
             }),
         },
-        revalidate: 10, // revalidate every 10 seconds
+        revalidate: 60, // revalidate every 60 seconds
     };
 }
